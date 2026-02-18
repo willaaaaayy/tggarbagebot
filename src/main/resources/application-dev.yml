@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:tgbotmap}
+    username: ${DB_USERNAME:tgbotmap}
+    password: ${DB_PASSWORD:tgbotmap}
+    hikari:
+      maximum-pool-size: 5
+      minimum-idle: 2
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+logging:
+  level:
+    com.tgbotmap: DEBUG
+    org.springframework.web: DEBUG
+    org.hibernate.SQL: DEBUG

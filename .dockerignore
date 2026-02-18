@@ -1,0 +1,14 @@
+.git
+.gitignore
+.idea
+*.iml
+*.iws
+*.ipr
+target/
+.env
+.env.example
+docker-compose.yml
+Dockerfile
+README.md
+plans/
+*.md

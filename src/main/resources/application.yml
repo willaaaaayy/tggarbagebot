@@ -1,0 +1,45 @@
+server:
+  port: ${SERVER_PORT:8080}
+
+spring:
+  application:
+    name: tgbotmap
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+    default-property-inclusion: non_null
+  jpa:
+    open-in-view: false
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 25
+        order_inserts: true
+        order_updates: true
+
+telegram:
+  bot:
+    token: ${BOT_TOKEN:}
+    allowed-group-id: ${TELEGRAM_ALLOWED_GROUP_ID:}
+    chat-id: ${TELEGRAM_CHAT_ID:}
+  api:
+    base-url: ${TELEGRAM_API_BASE_URL:https://api.telegram.org}
+    connect-timeout-ms: ${TELEGRAM_CONNECT_TIMEOUT:5000}
+    response-timeout-ms: ${TELEGRAM_RESPONSE_TIMEOUT:10000}
+  webhook:
+    path: ${TELEGRAM_WEBHOOK_PATH:/api/webhook}
+
+n8n:
+  url: ${N8N_URL:http://localhost:5678}
+
+admin:
+  username: ${ADMIN_USERNAME:admin}
+  password: ${ADMIN_PASSWORD:admin}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: when-authorized
