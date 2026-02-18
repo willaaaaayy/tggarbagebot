@@ -1,9 +1,9 @@
 package com.tgbotmap.controller;
 
 import com.tgbotmap.config.TelegramBotProperties;
-import com.tgbotmap.dto.telegram.TelegramMessage;
-import com.tgbotmap.dto.telegram.TelegramUpdate;
-import com.tgbotmap.service.AddressService;
+import com.tgbotmap.model.telegram.Message;
+import com.tgbotmap.model.telegram.Update;
+import com.tgbotmap.service.BotService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -19,11 +19,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class TelegramWebhookController {
 
     private final TelegramBotProperties botProperties;
-    private final AddressService addressService;
+    private final BotService botService;
 
     @PostMapping
-    public ResponseEntity<Void> onUpdate(@RequestBody TelegramUpdate update) {
-        TelegramMessage message = update.getMessage();
+    public ResponseEntity<Void> onUpdate(@RequestBody Update update) {
+        Message message = update.getMessage();
 
         if (message == null || message.getChat() == null) {
             log.debug("Received update without message or chat, ignoring. updateId={}", update.getUpdateId());
@@ -47,7 +47,7 @@ public class TelegramWebhookController {
         }
 
         log.info("Accepted message from chatId={}: {}", chatId, text);
-        addressService.processMessage(text);
+        botService.processUpdate(update);
 
         return ResponseEntity.ok().build();
     }

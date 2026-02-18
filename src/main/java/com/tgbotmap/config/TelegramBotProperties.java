@@ -18,4 +18,10 @@ public class TelegramBotProperties {
      * Allowed group chat ID. Only messages from this chat will be processed.
      */
     private Long allowedGroupId;
+
+    /**
+     * Webhook URL for Telegram to send updates to.
+     * Should be the full URL including the webhook path (e.g., https://example.com/api/webhook)
+     */
+    private String webhookUrl;
 }

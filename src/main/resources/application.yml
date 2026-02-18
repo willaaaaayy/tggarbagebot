@@ -30,6 +30,7 @@ telegram:
     token: ${BOT_TOKEN:}
     allowed-group-id: ${TELEGRAM_ALLOWED_GROUP_ID:}
     chat-id: ${TELEGRAM_CHAT_ID:}
+    webhook-url: ${TELEGRAM_WEBHOOK_URL:}
   api:
     base-url: ${TELEGRAM_API_BASE_URL:https://api.telegram.org}
     connect-timeout-ms: ${TELEGRAM_CONNECT_TIMEOUT:5000}
