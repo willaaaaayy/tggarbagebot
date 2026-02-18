@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://${PGHOST}:${PGPORT:5432}/${PGDATABASE}
-    username: ${PGUSER}
-    password: ${PGPASSWORD}
+    url: jdbc:postgresql://${DB_HOST:postgres}:${DB_PORT:5432}/${DB_NAME:tgbotmap}
+    username: ${DB_USERNAME:tgbotmap}
+    password: ${DB_PASSWORD:tgbotmap}
     hikari:
       maximum-pool-size: 20
       minimum-idle: 5
