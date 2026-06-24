@@ -180,6 +180,19 @@ Unit-тесты не требуют БД. Тест `TgBotMapApplicationTests.con
 - В `map.html` укажите свой ключ в `apikey=YOUR_API_KEY` для Yandex Maps JS API.
 - `.env` не коммитится (см. `.gitignore`); используйте `.env.example` как шаблон.
 
+## 📝 Changelog
+
+### [v0.2.0](https://github.com/willaaaaayy/tggarbagebot/releases/tag/v0.2.0)
+
+- 📍 Реализован основной конвейер: текст-адрес → геокодирование (n8n) → сохранение → ответ со ссылкой на карту.
+- 🔐 Единый `WebhookController` с проверкой `X-Telegram-Bot-Api-Secret-Token` и фильтром по группе.
+- 🌐 Публичный read-only эндпоинт `GET /public/locations`; убраны хардкод-креды из `map.html`.
+- 🛡️ Удалён дефолтный пароль `admin/admin` (fail-fast в prod); исправлен синтаксис плейсхолдеров.
+- 🧹 Удалён мёртвый код (`TelegramWebhookController`, `TelegramSenderService`, `dto/telegram/*`).
+- 🧪 Добавлены unit-тесты и 📖 README.
+
+Полный список изменений и заметки по деплою — на [странице релиза](https://github.com/willaaaaayy/tggarbagebot/releases/tag/v0.2.0).
+
 ---
 
 <div align="center">
