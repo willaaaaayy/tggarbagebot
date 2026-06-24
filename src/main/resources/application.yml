@@ -8,9 +8,9 @@ spring:
     property-naming-strategy: SNAKE_CASE
     default-property-inclusion: non_null
   datasource:
-    url: jdbc:postgresql://${DB_HOST:-localhost}:${DB_PORT:-5432}/${DB_NAME:-tgbotmap}
-    username: ${DB_USERNAME:-postgres}
-    password: ${DB_PASSWORD:-postgres}
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:tgbotmap}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
     hikari:
       maximum-pool-size: 10
       minimum-idle: 2
@@ -31,6 +31,7 @@ telegram:
     allowed-group-id: ${TELEGRAM_ALLOWED_GROUP_ID:}
     chat-id: ${TELEGRAM_CHAT_ID:}
     webhook-url: ${TELEGRAM_WEBHOOK_URL:}
+    webhook-secret: ${TELEGRAM_WEBHOOK_SECRET:}
   api:
     base-url: ${TELEGRAM_API_BASE_URL:https://api.telegram.org}
     connect-timeout-ms: ${TELEGRAM_CONNECT_TIMEOUT:5000}
@@ -43,7 +44,8 @@ n8n:
 
 admin:
   username: ${ADMIN_USERNAME:admin}
-  password: ${ADMIN_PASSWORD:admin}
+  # No default — must be provided via env in any real deployment (fail-fast if missing).
+  password: ${ADMIN_PASSWORD}
 
 management:
   endpoints:

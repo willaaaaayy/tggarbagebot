@@ -36,19 +36,12 @@
     <script>
         let map;
         let placemarks = [];
-        
-        // Replace with your admin credentials
-        const ADMIN_USERNAME = 'admin';
-        const ADMIN_PASSWORD = 'admin';
-        
+
         async function loadLocations() {
             try {
-                const response = await fetch('/admin/locations', {
-                    headers: {
-                        'Authorization': 'Basic ' + btoa(ADMIN_USERNAME + ':' + ADMIN_PASSWORD)
-                    }
-                });
-                
+                // Public, read-only endpoint — no credentials embedded in the page.
+                const response = await fetch('/public/locations');
+
                 if (!response.ok) {
                     throw new Error('Failed to load locations: ' + response.status);
                 }

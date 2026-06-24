@@ -14,6 +14,7 @@ public class BotService {
 
     private final UserService userService;
     private final TelegramApiClient telegramApiClient;
+    private final AddressService addressService;
 
     /**
      * Main entry point for processing incoming Telegram updates.
@@ -68,12 +69,14 @@ public class BotService {
                 Available commands:
                 /start — Register and start the bot
                 /help — Show this help message
+
+                Отправьте адрес сообщением — бот определит координаты и добавит точку на карту.
                 """;
         telegramApiClient.sendMessage(chatId, helpText);
     }
 
     private void handleTextMessage(Long chatId, String text, Message message) {
-        telegramApiClient.sendMessage(chatId,
-                "I received your message. Use /help to see available commands.");
+        // Plain text from the (authorized) chat is treated as an address to geocode and store.
+        addressService.processMessage(text, chatId);
     }
 }

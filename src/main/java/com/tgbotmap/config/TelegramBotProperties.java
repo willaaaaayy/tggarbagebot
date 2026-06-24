@@ -24,4 +24,11 @@ public class TelegramBotProperties {
      * Should be the full URL including the webhook path (e.g., https://example.com/api/webhook)
      */
     private String webhookUrl;
+
+    /**
+     * Optional secret token. When set, it is registered with Telegram via {@code setWebhook}
+     * and every incoming update must carry a matching {@code X-Telegram-Bot-Api-Secret-Token}
+     * header. Leave blank to disable verification.
+     */
+    private String webhookSecret;
 }

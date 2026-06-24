@@ -11,6 +11,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 
 import jakarta.annotation.PostConstruct;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -40,11 +41,19 @@ public class WebhookRegistrationService {
 
         log.info("Registering Telegram webhook: {}", webhookUrl);
 
+        Map<String, Object> body = new HashMap<>();
+        body.put("url", webhookUrl);
+        String secret = botProperties.getWebhookSecret();
+        if (secret != null && !secret.isBlank()) {
+            body.put("secret_token", secret);
+            log.info("Webhook secret token enabled for incoming update verification");
+        }
+
         try {
             TelegramResponse response = telegramWebClient.post()
                     .uri("/setWebhook")
                     .contentType(MediaType.APPLICATION_JSON)
-                    .bodyValue(Map.of("url", webhookUrl))
+                    .bodyValue(body)
                     .retrieve()
                     .bodyToMono(TelegramResponse.class)
                     .block();

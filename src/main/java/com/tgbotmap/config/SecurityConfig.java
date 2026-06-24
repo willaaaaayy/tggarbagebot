@@ -20,7 +20,8 @@ public class SecurityConfig {
     @Value("${admin.username:admin}")
     private String adminUsername;
 
-    @Value("${admin.password:admin}")
+    // No default — startup fails fast if `admin.password` (ADMIN_PASSWORD) is not provided.
+    @Value("${admin.password}")
     private String adminPassword;
 
     @Bean
