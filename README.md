@@ -11,6 +11,7 @@
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-4169E1?logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 [![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white)](https://docs.docker.com/compose/)
 [![Release](https://img.shields.io/badge/release-v0.2.0-blue)](https://github.com/willaaaaayy/tggarbagebot/releases/tag/v0.2.0)
+[![CI](https://github.com/willaaaaayy/tggarbagebot/actions/workflows/ci.yml/badge.svg)](https://github.com/willaaaaayy/tggarbagebot/actions/workflows/ci.yml)
 
 </div>
 
